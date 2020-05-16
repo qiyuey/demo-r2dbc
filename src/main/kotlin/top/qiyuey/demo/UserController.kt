@@ -1,6 +1,6 @@
 package top.qiyuey.demo
 
-import kotlinx.coroutines.reactive.awaitFirstOrNull
+import kotlinx.coroutines.reactive.awaitFirst
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -19,7 +19,7 @@ class UserController(
     }
 
     @GetMapping("/max-id")
-    suspend fun getMaxId(): Long? {
-        return userRepository.getMaxId().awaitFirstOrNull()
+    suspend fun getMaxId(): Long {
+        return userRepository.getMaxId().awaitFirst()
     }
 }
